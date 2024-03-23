@@ -31,7 +31,7 @@ const QueryPanel: React.FC = ({}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("src/data/exoplanet_data.csv");
+        const response = await fetch("/data/exoplanet_data.csv");
         const text = await response.text();
         const parsedData = Papa.parse(text, { header: true });
 
