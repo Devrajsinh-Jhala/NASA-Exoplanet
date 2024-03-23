@@ -77,7 +77,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
             This data is fetched from{" "}
             <span className="text-blue-500">
               <a
-                href="src/data/exoplanet_data.csv"
+                href="/data/exoplanet_data.csv"
                 target="_blank"
                 rel="noopener noreferrer"
               >
