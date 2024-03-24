@@ -42,7 +42,7 @@ const ReactDataTable = ({ filteredData }: Props) => {
         data,
       },
       useSortBy
-    );
+    ) as any;
 
   return (
     <section>
@@ -53,9 +53,9 @@ const ReactDataTable = ({ filteredData }: Props) => {
             className="max-w-7xl mx-auto border divide-y divide-gray-200"
           >
             <thead className="bg-gray-50">
-              {headerGroups.map((headerGroup) => (
+              {headerGroups.map((headerGroup: any) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
+                  {headerGroup.headers.map((column: any) => (
                     <th
                       className="px-6 py-3  text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                       {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -81,11 +81,11 @@ const ReactDataTable = ({ filteredData }: Props) => {
               className="bg-white divide-y divide-gray-200"
               {...getTableBodyProps}
             >
-              {rows.map((row) => {
+              {rows.map((row: any) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
+                    {row.cells.map((cell: any) => {
                       return (
                         <td
                           className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
