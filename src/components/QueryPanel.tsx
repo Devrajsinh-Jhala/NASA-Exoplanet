@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Papa from "papaparse";
-import DataTable from "./DataTable";
+// import DataTable from "./DataTable";
 import toast, { Toaster } from "react-hot-toast";
+import ReactDataTable from "./ReactDataTable";
 
 interface DropdownOptions {
   [key: string]: string[];
@@ -244,7 +245,7 @@ const QueryPanel: React.FC = ({}) => {
         </div>
       </section>
       <section className="my-10">
-        {emptySearch && <DataTable data={filteredData} />}
+        {emptySearch && <ReactDataTable filteredData={filteredData} />}
         {!emptySearch && (
           <section className=" overflow-x-hidden flex flex-col space-y-1 items-center justify-center">
             <p className=" font-bold">
