@@ -1,6 +1,5 @@
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { IoCaretUp, IoCaretDown } from "react-icons/io5";
 
 interface DataTableProps {
   data: any[];
@@ -19,16 +18,13 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
     const encodedPlanetName = encodeURIComponent(planetName);
     return `https://exoplanetarchive.ipac.caltech.edu/overview/${encodedPlanetName}`;
   };
-
-  const handleAscending = () => {};
-  const handleDescending = () => {};
-  console.log(data.length);
+  // console.log(data.length);
 
   return (
-    <div className="">
+    <div className="scrollbar-hide">
       {data.length > 0 ? (
         <div className="mt-4">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="max-w-7xl mx-auto border divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 {Object.keys(headerMapping).map((header) => (
@@ -38,10 +34,6 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     {headerMapping[header]}
-                    <div className="flex items-center my-2 space-x-3">
-                      <IoCaretUp onClick={() => handleAscending()} />
-                      <IoCaretDown onClick={() => handleDescending()} />
-                    </div>
                   </th>
                 ))}
               </tr>
@@ -85,7 +77,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
               </a>
             </span>{" "}
             and you can read about it{" "}
-            <span className="text-blue-500">
+            <span className="text-[#0D9298]">
               <a
                 href="https://exoplanetarchive.ipac.caltech.edu/index.html"
                 target="_blank"
@@ -104,7 +96,7 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
           </p>
           <p className="font-bold">
             Here you can query{" "}
-            <span className="text-blue-500">
+            <span className="text-[#0D9298]">
               <a
                 href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
                 target="_blank"

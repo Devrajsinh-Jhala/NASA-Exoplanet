@@ -115,13 +115,13 @@ const QueryPanel: React.FC = ({}) => {
       <div>
         <Toaster />
       </div>
-      <section className="w-full flex items-center flex-col justify-center border">
+      <section className="w-full flex text-sm items-center flex-col justify-center border">
         <div className="p-4  items-center space-x-10 rounded-md flex flex-col md:flex-row">
           {/* Hostname Dropdown */}
           <div className="flex flex-col">
             <label
               htmlFor="hostname"
-              className="block font-medium text-gray-700"
+              className="block font-medium text-base text-gray-700"
             >
               Host Name
             </label>
@@ -130,7 +130,7 @@ const QueryPanel: React.FC = ({}) => {
               name="hostname"
               value={query.hostname}
               onChange={(e) => setQuery({ ...query, hostname: e.target.value })}
-              className="mt-1 md:mt-0 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              className="mt-1  border-gray-500 rounded-md w-[185px] shadow-sm border"
             >
               <option value="">Host Name</option>
               {dropdownOptions.hostname &&
@@ -146,7 +146,10 @@ const QueryPanel: React.FC = ({}) => {
 
           {/* Method Dropdown */}
           <div className="flex flex-col">
-            <label htmlFor="method" className="block font-medium text-gray-700">
+            <label
+              htmlFor="method"
+              className="block text-base font-medium text-gray-700"
+            >
               Discovery Method
             </label>
             <select
@@ -154,7 +157,7 @@ const QueryPanel: React.FC = ({}) => {
               name="method"
               value={query.method}
               onChange={(e) => setQuery({ ...query, method: e.target.value })}
-              className="mt-1 md:mt-0 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
             >
               <option value="">Discovery Method</option>
               {dropdownOptions.discoverymethod &&
@@ -170,7 +173,10 @@ const QueryPanel: React.FC = ({}) => {
 
           {/* Year Dropdown */}
           <div className="flex flex-col">
-            <label htmlFor="year" className="block font-medium text-gray-700">
+            <label
+              htmlFor="year"
+              className="block text-base font-medium text-gray-700"
+            >
               Year of Discovery
             </label>
             <select
@@ -178,7 +184,7 @@ const QueryPanel: React.FC = ({}) => {
               name="year"
               value={query.year}
               onChange={(e) => setQuery({ ...query, year: e.target.value })}
-              className="mt-1 md:mt-0 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
             >
               <option value="">Select Year</option>
               {dropdownOptions.disc_year &&
@@ -197,7 +203,7 @@ const QueryPanel: React.FC = ({}) => {
           <div className="flex flex-col">
             <label
               htmlFor="facility"
-              className="block font-medium text-gray-700"
+              className="block font-medium text-base text-gray-700"
             >
               Discovery Facility
             </label>
@@ -206,7 +212,7 @@ const QueryPanel: React.FC = ({}) => {
               name="facility"
               value={query.facility}
               onChange={(e) => setQuery({ ...query, facility: e.target.value })}
-              className="mt-1 md:mt-0 border-gray-300 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
             >
               <option value="">Discovery Facility</option>
               {dropdownOptions.disc_facility &&
@@ -221,10 +227,10 @@ const QueryPanel: React.FC = ({}) => {
           </div>
 
           {/* Buttons */}
-          <div className="ml-auto md:ml-4 mt-4 md:mt-0">
+          <div className="ml-auto text-sm md:ml-4 mt-4 md:mt-0">
             <button
               onClick={handleSearch}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+              className="px-4 py-2 bg-[#0D9298] text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298]"
             >
               Search
             </button>
@@ -246,7 +252,7 @@ const QueryPanel: React.FC = ({}) => {
             </p>
             <p className="font-bold">
               Here you can query{" "}
-              <span className="text-blue-500">
+              <span className="text-[#0D9298]">
                 <a
                   href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
                   target="_blank"
