@@ -11,7 +11,7 @@ The objective of the NASA Exoplanet Query app is to make this data available for
 
 ## Tech Stack
 
-React, TailwindCSS, Papaparse, TypeScript
+React, TailwindCSS, Papaparse, TypeScript, React Table
 
 ## Installation
 
