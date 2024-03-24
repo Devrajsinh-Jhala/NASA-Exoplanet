@@ -90,23 +90,40 @@ const DataTable: React.FC<DataTableProps> = ({ data }) => {
           </p>
         </div>
       ) : (
-        <section className=" overflow-x-hidden flex flex-col space-y-1 items-center justify-center">
-          <p className=" font-bold">
-            Exoplanets are planets outside the Solar System.
-          </p>
-          <p className="font-bold">
-            Here you can query{" "}
-            <span className="text-[#0D9298]">
-              <a
-                href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                NASA&apos;s Exoplanet Archive
-              </a>
-            </span>{" "}
-            and find the one you love the most.
-          </p>
+        <section className=" overflow-x-hidden flex flex-col space-y-10 items-center justify-center">
+          <section>
+            <p className=" font-bold">
+              Exoplanets are planets outside the Solar System.
+            </p>
+            <p className="font-bold">
+              Here you can query{" "}
+              <span className="text-[#0D9298]">
+                <a
+                  href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NASA&apos;s Exoplanet Archive
+                </a>
+              </span>{" "}
+              and find the one you love the most.
+            </p>
+          </section>
+          <section className="my-10">
+            <section className="max-w-3xl rounded-lg p-4 border border-gray-500 mx-auto">
+              <p className="text-lg text-center font-bold">
+                Features and Directions
+              </p>
+              <hr className="border-gray-800 border" />
+              <ul className="list-disc p-2">
+                <li>Select one or more options to view data.</li>
+                <li>Click on the table header to sort the data.</li>
+                <li>Click on the Search to view your queried data.</li>
+                <li>Click on clear button to restart again!.</li>
+                <li>Click on the hyperlinks to view more information!.</li>
+              </ul>
+            </section>
+          </section>
         </section>
       )}
     </div>

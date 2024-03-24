@@ -117,7 +117,7 @@ const QueryPanel: React.FC = ({}) => {
         <Toaster />
       </div>
       <section className="w-full flex text-sm items-center flex-col justify-center border">
-        <div className="p-4  items-center space-x-10 rounded-md flex flex-col md:flex-row">
+        <div className="p-4  items-center md:space-x-10 space-y-3 md:space-y-0 rounded-md flex flex-col md:flex-row">
           {/* Hostname Dropdown */}
           <div className="flex flex-col">
             <label
@@ -228,7 +228,7 @@ const QueryPanel: React.FC = ({}) => {
           </div>
 
           {/* Buttons */}
-          <div className="ml-auto text-sm md:ml-4 mt-4 md:mt-0">
+          <div className="mx-auto text-sm md:ml-4 mt-4 md:mt-0">
             <button
               onClick={handleSearch}
               className="px-4 py-2 bg-[#0D9298] text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298]"
@@ -247,23 +247,40 @@ const QueryPanel: React.FC = ({}) => {
       <section className="my-10">
         {emptySearch && <ReactDataTable filteredData={filteredData} />}
         {!emptySearch && (
-          <section className=" overflow-x-hidden flex flex-col space-y-1 items-center justify-center">
-            <p className=" font-bold">
-              Exoplanets are planets outside the Solar System.
-            </p>
-            <p className="font-bold">
-              Here you can query{" "}
-              <span className="text-[#0D9298]">
-                <a
-                  href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  NASA&apos;s Exoplanet Archive
-                </a>
-              </span>{" "}
-              and find the one you love the most.
-            </p>
+          <section className=" overflow-x-hidden flex flex-col space-y-10 items-center justify-center">
+            <section className="text-center">
+              <p className=" font-bold">
+                Exoplanets are planets outside the Solar System.
+              </p>
+              <p className="font-bold">
+                Here you can query{" "}
+                <span className="text-[#0D9298]">
+                  <a
+                    href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    NASA&apos;s Exoplanet Archive
+                  </a>
+                </span>{" "}
+                and find the one you love the most.
+              </p>
+            </section>
+            <section className="my-10">
+              <section className="max-w-3xl rounded-lg p-4 border border-gray-500 mx-auto">
+                <p className="text-lg text-center font-bold">
+                  Features and Directions
+                </p>
+                <hr className="border-gray-800 border" />
+                <ul className="list-disc p-2">
+                  <li>Select one or more options to view data.</li>
+                  <li>Click on the table header to sort the data.</li>
+                  <li>Click on the Search to view your queried data.</li>
+                  <li>Click on clear button to restart again!.</li>
+                  <li>Click on the hyperlinks to view more information!.</li>
+                </ul>
+              </section>
+            </section>
           </section>
         )}
       </section>
