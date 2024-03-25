@@ -3,6 +3,7 @@ import { COLUMNS } from "../utils/columns";
 import { IoCaretUp, IoCaretDown } from "react-icons/io5";
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 type Props = {
   filteredData: any[];
@@ -61,8 +62,8 @@ const ReactDataTable = ({ filteredData }: Props) => {
                       {...column.getHeaderProps(column.getSortByToggleProps())}
                     >
                       <p>{column.render("Header")}</p>
-                      <span className="ml-2">
-                        {column.isSorted ? (
+                      <span className="flex items-center mt-2  space-x-3">
+                        {/* {column.isSorted ? (
                           column.isSortedDesc ? (
                             <IoCaretDown />
                           ) : (
@@ -70,7 +71,9 @@ const ReactDataTable = ({ filteredData }: Props) => {
                           )
                         ) : (
                           ""
-                        )}
+                        )} */}
+                        <IoCaretUp onClick={() => !column.isSortedDesc} />
+                        <IoCaretDown onClick={() => column.isSortedDesc} />
                       </span>
                     </th>
                   ))}
@@ -125,7 +128,7 @@ const ReactDataTable = ({ filteredData }: Props) => {
           </p>
         </>
       ) : (
-        <section className=" overflow-x-hidden flex flex-col space-y-10 items-center justify-center">
+        <section className=" overflow-x-hidden md:h-[70vh] flex flex-col space-y-10 items-center justify-center">
           <section className="text-center">
             <p className=" font-bold">
               Exoplanets are planets outside the Solar System.
@@ -144,7 +147,7 @@ const ReactDataTable = ({ filteredData }: Props) => {
               and find the one you love the most.
             </p>
           </section>
-          <section className="my-10">
+          <section className="my-10 flex flex-col items-center justify-center">
             <section className="max-w-3xl rounded-lg p-4 border border-gray-500 mx-auto">
               <p className="text-lg text-center font-bold">
                 Features and Directions
@@ -154,10 +157,15 @@ const ReactDataTable = ({ filteredData }: Props) => {
                 <li>Select one or more options to view data.</li>
                 <li>Click on the table header to sort the data.</li>
                 <li>Click on the Search to view your queried data.</li>
-                <li>Click on clear button to restart again!.</li>
+                <li>Click on clear button to restart.</li>
                 <li>Click on the hyperlinks to view more information!.</li>
               </ul>
             </section>
+            <Link className="align-center" to={"/"}>
+              <button className="px-4 py-2 bg-[#0D9298] mt-5 text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298] text-sm sm:text-base w-fit">
+                Go to Home Page
+              </button>
+            </Link>
           </section>
         </section>
       )}

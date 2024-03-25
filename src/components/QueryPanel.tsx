@@ -3,6 +3,7 @@ import Papa from "papaparse";
 // import DataTable from "./DataTable";
 import toast, { Toaster } from "react-hot-toast";
 import ReactDataTable from "./ReactDataTable";
+import { Link } from "react-router-dom";
 
 interface DropdownOptions {
   [key: string]: string[];
@@ -69,7 +70,7 @@ const QueryPanel: React.FC = ({}) => {
     ) {
       // Filter data based on selected options
       setEmptySearch(false);
-      toast.error("Enter something to search");
+      toast.error("Please select at least one field ");
       return;
     }
     setEmptySearch(true);
@@ -83,6 +84,8 @@ const QueryPanel: React.FC = ({}) => {
     const uniqueFilteredData = Array.from(
       new Set(filteredData.map((item) => JSON.stringify(item)))
     ).map((itemStr) => JSON.parse(itemStr));
+
+    uniqueFilteredData.length === 0 && toast.error("Value not found!");
 
     // console.log(uniqueFilteredData);
     setFilteredData(uniqueFilteredData); // Log filtered data to the console
@@ -114,24 +117,18 @@ const QueryPanel: React.FC = ({}) => {
   return (
     <section className="">
       <div>
-        <Toaster />
+        <Toaster position="bottom-center" reverseOrder={false} />
       </div>
-      <section className="w-full flex text-sm items-center flex-col justify-center border">
+      <section className="w-full bg-slate-50 md:h-[10vh] pt-14 pb-10 flex text-sm items-center flex-col justify-center">
         <div className="p-4  items-center md:space-x-10 space-y-3 md:space-y-0 rounded-md flex flex-col md:flex-row">
           {/* Hostname Dropdown */}
           <div className="flex flex-col">
-            <label
-              htmlFor="hostname"
-              className="block font-medium text-base text-gray-700"
-            >
-              Host Name
-            </label>
             <select
               id="hostname"
               name="hostname"
               value={query.hostname}
               onChange={(e) => setQuery({ ...query, hostname: e.target.value })}
-              className="mt-1  border-gray-500 rounded-md w-[185px] shadow-sm border"
+              className="mt-1  border-gray-500 rounded-sm p-1 w-[190px] shadow-sm border"
             >
               <option value="">Host Name</option>
               {dropdownOptions.hostname &&
@@ -147,18 +144,12 @@ const QueryPanel: React.FC = ({}) => {
 
           {/* Method Dropdown */}
           <div className="flex flex-col">
-            <label
-              htmlFor="method"
-              className="block text-base font-medium text-gray-700"
-            >
-              Discovery Method
-            </label>
             <select
               id="method"
               name="method"
               value={query.method}
               onChange={(e) => setQuery({ ...query, method: e.target.value })}
-              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
+              className="mt-1 border-gray-500 w-[190px] p-1 rounded-sm shadow-sm border"
             >
               <option value="">Discovery Method</option>
               {dropdownOptions.discoverymethod &&
@@ -174,18 +165,12 @@ const QueryPanel: React.FC = ({}) => {
 
           {/* Year Dropdown */}
           <div className="flex flex-col">
-            <label
-              htmlFor="year"
-              className="block text-base font-medium text-gray-700"
-            >
-              Year of Discovery
-            </label>
             <select
               id="year"
               name="year"
               value={query.year}
               onChange={(e) => setQuery({ ...query, year: e.target.value })}
-              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
+              className="mt-1 border-gray-500 w-[190px] p-1 rounded-sm shadow-sm border"
             >
               <option value="">Select Year</option>
               {dropdownOptions.disc_year &&
@@ -202,18 +187,12 @@ const QueryPanel: React.FC = ({}) => {
 
           {/* Facility Dropdown */}
           <div className="flex flex-col">
-            <label
-              htmlFor="facility"
-              className="block font-medium text-base text-gray-700"
-            >
-              Discovery Facility
-            </label>
             <select
               id="facility"
               name="facility"
               value={query.facility}
               onChange={(e) => setQuery({ ...query, facility: e.target.value })}
-              className="mt-1 border-gray-500 w-[185px] rounded-md shadow-sm border"
+              className="mt-1 border-gray-500 w-[190px] p-1 rounded-sm shadow-sm border"
             >
               <option value="">Discovery Facility</option>
               {dropdownOptions.disc_facility &&
@@ -231,13 +210,13 @@ const QueryPanel: React.FC = ({}) => {
           <div className="mx-auto text-sm md:ml-4 mt-4 md:mt-0">
             <button
               onClick={handleSearch}
-              className="px-4 py-2 bg-[#0D9298] text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298]"
+              className="px-4 py-2 bg-[#0D9298] text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298] text-xs"
             >
               Search
             </button>
             <button
               onClick={handleClear}
-              className="px-4 ml-2 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300"
+              className="px-4 lg:ml-5 mt-4 lg:mt-0 py-2 bg-gray-300/80 text-black rounded-md hover:bg-gray-300 focus:outline-none focus:bg-gray-300 text-xs"
             >
               Clear
             </button>
@@ -247,7 +226,7 @@ const QueryPanel: React.FC = ({}) => {
       <section className="my-10">
         {emptySearch && <ReactDataTable filteredData={filteredData} />}
         {!emptySearch && (
-          <section className=" overflow-x-hidden flex flex-col space-y-10 items-center justify-center">
+          <section className=" overflow-x-hidden md:h-[70vh] flex flex-col space-y-10 items-center justify-center">
             <section className="text-center">
               <p className=" font-bold">
                 Exoplanets are planets outside the Solar System.
@@ -266,7 +245,7 @@ const QueryPanel: React.FC = ({}) => {
                 and find the one you love the most.
               </p>
             </section>
-            <section className="my-10">
+            <section className="my-10 flex flex-col items-center justify-center">
               <section className="max-w-3xl rounded-lg p-4 border border-gray-500 mx-auto">
                 <p className="text-lg text-center font-bold">
                   Features and Directions
@@ -276,10 +255,15 @@ const QueryPanel: React.FC = ({}) => {
                   <li>Select one or more options to view data.</li>
                   <li>Click on the table header to sort the data.</li>
                   <li>Click on the Search to view your queried data.</li>
-                  <li>Click on clear button to restart again!.</li>
+                  <li>Click on clear button to restart.</li>
                   <li>Click on the hyperlinks to view more information!.</li>
                 </ul>
               </section>
+              <Link className="align-center" to={"/"}>
+                <button className="px-4 py-2 bg-[#0D9298] mt-5 text-white rounded-md hover:bg-[#476c6e] focus:outline-none focus:bgt-[#0D9298] text-sm sm:text-base w-fit">
+                  Go to Home Page
+                </button>
+              </Link>
             </section>
           </section>
         )}
